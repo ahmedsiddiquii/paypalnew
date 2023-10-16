@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Page</title>
+    <style>
+        body {
+            text-align: center; /* Center-align the content in the body */
+        }
+
+        img {
+            height: 250px; /* Set the height of images as per your requirement */
+            width: 700px;
+            display: block; /* Center-align the image */
+            margin: 0 auto; /* Center-align the image */
+            margin-top:4px;
+        }
+
+        h1, h2 {
+            text-align: center; /* Center-align h1 and h2 tags */
+        }
+    </style>
+</head>
+<body>
+    <h1>Products for Sale</h1>
+    <img src="../static/images/TshirtMen.png">
+    <!-- Product 1: Men's T-shirts -->
+    <h2>Men's T-shirts: 4 for $40</h2>
+    {{ form1.render }}
+
+    <img src="../static/images/WomenTshirt.png">
+    <!-- Product 2: Woman's T-shirts -->
+    <h2>Woman's T-shirts: 4 for $40</h2>
+    {{ form2.render }}
+
+    <img src="../static/images/Sweatpants Men.png">
+    <!-- Product 3: Men's Sweatpants -->
+    <h2>Men's Sweatpants: 3 for $60</h2>
+    {{ form3.render }}
+
+    <img src="../static/images/Sweatpants Women.png">
+    <!-- Product 4: Woman's Sweatpants -->
+    <h2>Woman's Sweatpants: 3 for $60</h2>
+    {{ form4.render }}
+
+    <img src="../static/images/Nike Air Force unisex.png">
+    <!-- Product 5: Nike Air Force Unisex -->
+    <h2>Nike Air Force Unisex: 1 Pair for $50</h2>
+    {{ form5.render }}
+</body>
+</html>
