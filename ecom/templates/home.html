@@ -6,47 +6,106 @@
     <title>Product Page</title>
     <style>
         body {
-            text-align: center; /* Center-align the content in the body */
+            text-align: center;
+            background-color: #202620;
+            padding-top: 20px;
         }
 
         img {
-            height: 250px; /* Set the height of images as per your requirement */
+            height: 250px;
             width: 700px;
-            display: block; /* Center-align the image */
-            margin: 0 auto; /* Center-align the image */
-            margin-top:4px;
+            display: block;
+            margin: 0 auto;
+            margin-top: 4px;
         }
 
         h1, h2 {
-            text-align: center; /* Center-align h1 and h2 tags */
+            text-align: center;
+            color: white;
+        }
+
+        /* CSS to style the PayPal button container */
+        .paypal-button-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 50px; 
+        }
+        .paypal-button {
+            line-height: 20px; 
         }
     </style>
+    <script src="https://www.paypal.com/sdk/js?client-id=AXvLup8YB6QfuZQTmdqQEXvxaacL8kDdl35F-Bpk5fOPPWp48tmh59ulJvCmL9GrsFwPF_medJbjj9Zi"></script>
 </head>
 <body>
-    <h1>Products for Sale</h1>
     <img src="../static/images/TshirtMen.png">
     <!-- Product 1: Men's T-shirts -->
     <h2>Men's T-shirts: 4 for $40</h2>
-    {{ form1.render }}
+    <div class="paypal-button-container">
+        <div id="paypal-button-container-1"></div>
+    </div>
 
     <img src="../static/images/WomenTshirt.png">
     <!-- Product 2: Woman's T-shirts -->
     <h2>Woman's T-shirts: 4 for $40</h2>
-    {{ form2.render }}
+    <div class="paypal-button-container">
+        <div id="paypal-button-container-2"></div>
+    </div>
 
-    <img src="../static/images/Sweatpants Men.png">
+    <img src="../static/images/SweatpantsMen.png">
     <!-- Product 3: Men's Sweatpants -->
     <h2>Men's Sweatpants: 3 for $60</h2>
-    {{ form3.render }}
+    <div class="paypal-button-container">
+        <div id="paypal-button-container-3"></div>
+    </div>
 
-    <img src="../static/images/Sweatpants Women.png">
+    <img src="../static/images/SweatpantsWomen.png">
     <!-- Product 4: Woman's Sweatpants -->
     <h2>Woman's Sweatpants: 3 for $60</h2>
-    {{ form4.render }}
+    <div class="paypal-button-container">
+        <div id="paypal-button-container-4"></div>
+    </div>
 
-    <img src="../static/images/Nike Air Force unisex.png">
+    <img src="../static/images/NikeAirForce.png">
     <!-- Product 5: Nike Air Force Unisex -->
     <h2>Nike Air Force Unisex: 1 Pair for $50</h2>
-    {{ form5.render }}
+    <div class="paypal-button-container">
+        <div id="paypal-button-container-5"></div>
+    </div>
+
+    <script>
+        // Create a function to initialize PayPal Smart Payment Buttons
+        function initializePayPalButton(containerId, amount) {
+            paypal.Buttons({
+    createOrder: function(data, actions) {
+        return actions.order.create({
+            purchase_units: [{
+                amount: {
+                    value: amount,
+                },
+            }],
+        });
+    },
+    onApprove: function(data, actions) {
+        return actions.order.capture().then(function(details) {
+            // Handle the successful payment here
+            alert('Payment completed successfully');
+            // You can redirect to a success page or do something else here
+        });
+    },
+    fundingSource: paypal.FUNDING.PAYPAL, // Show only the PayPal button
+    commit: false, // Keep the user on the current page
+    target: '_self', // Open PayPal in the same window
+}).render(containerId);
+
+        }
+
+        // Call the function for each product
+        initializePayPalButton('#paypal-button-container-1', '40.00');
+        initializePayPalButton('#paypal-button-container-2', '40.00');
+        initializePayPalButton('#paypal-button-container-3', '60.00');
+        initializePayPalButton('#paypal-button-container-4', '60.00');
+        initializePayPalButton('#paypal-button-container-5', '50.00');
+    </script>
 </body>
 </html>

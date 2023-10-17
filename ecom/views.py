@@ -73,6 +73,7 @@ def home(request):
         'form3': form3,
         'form4': form4,
         'form5': form5,
+        'paypal_client_id': 'AWAbe1IVSLR_yOPmUlqvINipf1KyVu6QqQ9G5TXH44MebKyox1qi0ikTLvvxUpFAv9pAd0OYDmf2dSCi',
         }
     return render(request, 'home.html', context)
 
