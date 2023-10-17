@@ -138,7 +138,7 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 #paypal Settings
 PAYPAL_TEST = True  
-PAYPAL_RECEIVER_EMAIL = 'sb-wyf7m27791303@business.example.com'
+PAYPAL_RECEIVER_EMAIL = 'sb-lw5bf26128395@business.example.com'
 
 
 
